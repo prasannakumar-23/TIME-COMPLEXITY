@@ -2,23 +2,28 @@
 using namespace std;
 
 int main() {
-    int n=10;
-	for(int i=1;i<=n;i++)
+    int i,j,k,l;
+	int n=10;
+	for(i=1;i<=n;i++)
 	cout<<i<<endl;
 
-	int i,j;
-	for(i=1;i<=n;i++)
+	
+	for(i=1;i<=n;i+=1)
 	{
-		for(j=i;j<=n;j++)
+		for(j=1;j<=n;j=j+2)
 		{
-			cout<<i<<endl;
+			for(k=1;k<=10;k++)
+			{
+				for(l=n;l>=1;l--)
+				cout<<"Hello";
+			}
 		}
 	}
 
-	i=1;
-	while(i<=10){
-	    cout<<i;
-	    i++;
-	}
+	// i=1;
+	// while(i<=10){
+	//     cout<<i;
+	//     i++;
+	// }
 	return 0;
 }
