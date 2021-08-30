@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" xmlns:cpp="http://www.srcML.org/srcML/cpp" revision="1.0.0" language="C++" filename="for_and_while.cpp"><cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;bits/stdc++.h&gt;</cpp:file></cpp:include>
+<using>using <namespace>namespace <name>std</name>;</namespace></using>
+
+<function><type><name>int</name></type> <name>main</name><parameter_list>()</parameter_list> <block>{<block_content>
+    <decl_stmt><decl><type><name>int</name></type> <name>n</name><init>=<expr><literal type="number">10</literal></expr></init></decl>;</decl_stmt>
+	<for>for<control>(<init><decl><type><name>int</name></type> <name>i</name><init>=<expr><literal type="number">1</literal></expr></init></decl>;</init><condition><expr><name>i</name><operator>&lt;=</operator><name>n</name></expr>;</condition><incr><expr><name>i</name><operator>++</operator></expr></incr>)</control><block type="pseudo"><block_content>
+	<expr_stmt><expr><name>cout</name><operator>&lt;&lt;</operator><name>i</name><operator>&lt;&lt;</operator><name>endl</name></expr>;</expr_stmt></block_content></block></for>
+
+	<decl_stmt><decl><type><name>int</name></type> <name>i</name></decl>,<decl><type ref="prev"/><name>j</name></decl>;</decl_stmt>
+	<for>for<control>(<init><expr><name>i</name><operator>=</operator><literal type="number">1</literal></expr>;</init><condition><expr><name>i</name><operator>&lt;=</operator><name>n</name></expr>;</condition><incr><expr><name>i</name><operator>++</operator></expr></incr>)</control>
+	<block>{<block_content>
+		<for>for<control>(<init><expr><name>j</name><operator>=</operator><name>i</name></expr>;</init><condition><expr><name>j</name><operator>&lt;=</operator><name>n</name></expr>;</condition><incr><expr><name>j</name><operator>++</operator></expr></incr>)</control>
+		<block>{<block_content>
+			<expr_stmt><expr><name>cout</name><operator>&lt;&lt;</operator><name>i</name><operator>&lt;&lt;</operator><name>endl</name></expr>;</expr_stmt>
+		</block_content>}</block></for>
+	</block_content>}</block></for>
+
+	<expr_stmt><expr><name>i</name><operator>=</operator><literal type="number">1</literal></expr>;</expr_stmt>
+	<while>while<condition>(<expr><name>i</name><operator>&lt;=</operator><literal type="number">10</literal></expr>)</condition><block>{<block_content>
+	    <expr_stmt><expr><name>cout</name><operator>&lt;&lt;</operator><name>i</name></expr>;</expr_stmt>
+	    <expr_stmt><expr><name>i</name><operator>++</operator></expr>;</expr_stmt>
+	</block_content>}</block></while>
+	<return>return <expr><literal type="number">0</literal></expr>;</return>
+</block_content>}</block></function></unit>
