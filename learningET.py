@@ -25,6 +25,7 @@ class Method:
 
 
 def handle_block(block, comp, method_name):
+    
     block_content = block[0]
     for children in block_content:
         tag = str(children.tag)
@@ -32,8 +33,16 @@ def handle_block(block, comp, method_name):
         # print(tag, "block", "function " + method_name)   
         if(tag=="if_stmt"):
             handle_if_stmt(children, comp, method_name)   
-        if(tag=="for"):
-            handle_for(children, comp, method_name) 
+        elif(tag=="for"):
+            handle_for(children, comp, method_name)
+        else:
+            for call in children.iter("{http://www.srcML.org/srcML/src}call"):
+                name=call[0].text
+                if not name==method_name:
+                    for method in functions_list:
+                        if method.name==name:
+                            method.complexity = comp
+                            handle_block(method.block, comp, method.name)
     #TODO: add more statements
         
 
@@ -60,7 +69,7 @@ def handle_func(func,comp):
                 j+=1            
         elif tag=='block':
             method.block=children
-            handle_block(children, comp, method.name)
+            # handle_block(children, comp, method.name)
     functions_list.append(method)
     # print(method.type, method.name, method.parameters, method.complexity)
 
@@ -147,13 +156,13 @@ def handle_control(control, comp, method_name):
     if (not is_exp3_digit) or (not is_exp2_digit):
         if ((op1=="+=" and exp1.isdigit()) or op1=="++" or op1=="--" or (op1=="-=" and exp1.isdigit()) or (op1=="+" and exp1.isdigit()) or(op1=="-" and exp1.isdigit()) ):
             comp = "n"+comp
-            print(comp)
+            print(comp, method_name)
             return comp
         if ((op1=="*=" and exp1.isdigit()) or  (op1=="/=" and exp1.isdigit()) or (op1=="*" and exp1.isdigit()) or (op1=="/" and exp1.isdigit())):
             comp = comp + "log(n)b(" + exp1 +")"
-            print(comp)
+            print(comp, method_name)
             return comp
-    print(comp)
+    print(comp, method_name)
     return comp
     
 
@@ -177,6 +186,7 @@ def handle_for(for_, comp, method_name):
     comp = handle_control(control, comp, method_name)
     
     block =for_[1]
+    print("Calling fro block")
     handle_block(block, comp, method_name)
 
 
@@ -216,6 +226,10 @@ for child in root:
     if( tag == 'function'):
         func = child
         handle_func(func, "")
+    
+for methods in functions_list:
+    if methods.name =="main":
+        handle_block(methods.block, "", "main")
 
 
     

@@ -1,5 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
+void he(int n)
+{
+	int j;
+	for(j=1;j<=n;j=j*2)
+	cout<<"Hello ";
+}
+void hello(int n)
+{
+	int i;
+	for(i=1;i<=n;i++)
+	he(n);
+}
 
 int main() {
     int i,j,k,l;
@@ -15,7 +27,7 @@ int main() {
 			for(k=1;k<=10;k++)
 			{
 				for(l=n;l>=1;l--)
-				cout<<"Hello";
+				hello(n);
 			}
 		}
 	}
