@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" xmlns:cpp="http://www.srcML.org/srcML/cpp" revision="1.0.0" language="C++" filename="learning_public.cpp"><cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;iostream&gt;</cpp:file></cpp:include>
+<using>using <namespace>namespace <name>std</name>;</namespace></using>
+  
+<comment type="line">// class definition</comment>
+<class>class <name>Circle</name> <block>{<private type="default">
+</private><public>public:
+    <decl_stmt><decl><type><name>double</name></type> <name>radius</name></decl>;</decl_stmt>
+  
+    <function><type><name>double</name></type> <name>compute_area</name><parameter_list>()</parameter_list>
+    <block>{<block_content>
+        <return>return <expr><literal type="number">3.14</literal> <operator>*</operator> <name>radius</name> <operator>*</operator> <name>radius</name></expr>;</return>
+    </block_content>}</block></function>
+</public>}</block>;</class>
+  
+<comment type="line">// main function</comment>
+<function><type><name>int</name></type> <name>main</name><parameter_list>()</parameter_list>
+<block>{<block_content>
+    <decl_stmt><decl><type><name>Circle</name></type> <name>obj</name></decl>;</decl_stmt>
+  
+    <comment type="line">// accessing public data member outside class</comment>
+    <expr_stmt><expr><name><name>obj</name><operator>.</operator><name>radius</name></name> <operator>=</operator> <literal type="number">5.5</literal></expr>;</expr_stmt>
+  
+    <expr_stmt><expr><name>cout</name> <operator>&lt;&lt;</operator> <literal type="string">"Radius is: "</literal> <operator>&lt;&lt;</operator> <name><name>obj</name><operator>.</operator><name>radius</name></name> <operator>&lt;&lt;</operator> <literal type="string">"\n"</literal></expr>;</expr_stmt>
+    <expr_stmt><expr><name>cout</name> <operator>&lt;&lt;</operator> <literal type="string">"Area is: "</literal> <operator>&lt;&lt;</operator> <call><name><name>obj</name><operator>.</operator><name>compute_area</name></name><argument_list>()</argument_list></call></expr>;</expr_stmt>
+    <return>return <expr><literal type="number">0</literal></expr>;</return>
+</block_content>}</block></function></unit>
